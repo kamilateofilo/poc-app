@@ -1,13 +1,15 @@
-
 import React from 'react';
 import { View, Text, Pressable, Image, StyleSheet } from 'react-native';
-import { useNavigation, NavigationProp } from '@react-navigation/native';
-
+import { useNavigation } from '@react-navigation/native';
+import { NavigationProp } from '@react-navigation/core';
+ 
 import { RootStackParamList } from '../app/types';
-
-
+ 
+ 
 const Home: React.FC = () => {
-    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+ 
+ 
   return (
     <View style={styles.homeChild}>
       <View style={styles.instanceParent}>
@@ -19,7 +21,7 @@ const Home: React.FC = () => {
             <View style={styles.familySvgrepoCom1Parent}>
               <Image
                 style={styles.familySvgrepoCom1Icon}
-                source={require("../assets/images/familysvgrepocom-1@3x.png")}
+                source={require("../assets/images/familysvgrepocom-1.png")}
               />
               <Text style={[styles.crdito, styles.crasTypo]}>
                 Identificação da família
@@ -35,7 +37,7 @@ const Home: React.FC = () => {
             <View style={styles.familySvgrepoCom1Group}>
               <Image
                 style={styles.familySvgrepoCom1Icon}
-                source={require("../assets/images/familysvgrepocom-11@3x.png")}
+                source={require("../assets/images/familysvgrepocom-11.png")}
               />
               <Text style={[styles.crdito, styles.crasTypo]}>Benefícios</Text>
             </View>
@@ -49,7 +51,7 @@ const Home: React.FC = () => {
             <View style={styles.familySvgrepoCom1Group}>
               <Image
                 style={styles.familySvgrepoCom1Icon}
-                source={require("../assets/images/familysvgrepocom-12@3x.png")}
+                source={require("../assets/images/familysvgrepocom-12.png")}
               />
               <Text style={[styles.crdito, styles.crasTypo]}>PAIF</Text>
             </View>
@@ -63,7 +65,7 @@ const Home: React.FC = () => {
             <View style={styles.familySvgrepoCom1Group}>
               <Image
                 style={styles.familySvgrepoCom1Icon}
-                source={require("../assets/images/familysvgrepocom-13@3x.png")}
+                source={require("../assets/images/familysvgrepocom-13.png")}
               />
               <Text style={[styles.crdito, styles.crasTypo]}>
                 Pesquisar unidades
@@ -79,7 +81,7 @@ const Home: React.FC = () => {
             <View style={styles.familySvgrepoCom1Group}>
               <Image
                 style={[styles.familySvgrepoCom1Icon4, styles.familyIconLayout]}
-                source={require("../assets/images/familysvgrepocom-14@3x.png")}
+                source={require("../assets/images/familysvgrepocom-14.png")}
               />
               <Text style={[styles.crdito, styles.crasTypo]}>
                 Sobre a Proteção Social
@@ -95,7 +97,7 @@ const Home: React.FC = () => {
             <View style={styles.familySvgrepoCom1Group}>
               <Image
                 style={[styles.familySvgrepoCom1Icon5, styles.familyIconLayout]}
-                source={require("../assets/images/familysvgrepocom-15@3x.png")}
+                source={require("../assets/images/familysvgrepocom-15.png")}
               />
               <Text style={[styles.crdito, styles.crasTypo]}>
                 Cadastro Único
@@ -108,7 +110,7 @@ const Home: React.FC = () => {
         <View style={styles.iconsParent}>
           <Image
             style={styles.familySvgrepoCom1Icon}
-            source={require("../assets/images/icon.png")}
+            source={require("../assets/images/icons.png")}
           />
           <Text style={styles.home1}>Home</Text>
         </View>
@@ -118,21 +120,21 @@ const Home: React.FC = () => {
         >
           <Image
             style={styles.familySvgrepoCom1Icon}
-            source={require("../assets/images/mappin@3x.png")}
+            source={require("../assets/images/mappin.png")}
           />
           <Text style={styles.home1}>Cras/Creas</Text>
         </Pressable>
         <View style={styles.iconsParent}>
           <Image
             style={styles.familySvgrepoCom1Icon}
-            source={require("../assets/images/iconns1@3x.png")}
+            source={require("../assets/images/icons1.png")}
           />
           <Text style={styles.home1}>Configurações</Text>
         </View>
         <View style={styles.iconsParent}>
           <Image
             style={styles.icons2}
-            source={require("../assets/images/icons2@3x.png")}
+            source={require("../assets/images/icons2.png")}
           />
           <Text style={styles.home1}>Notificações</Text>
         </View>
@@ -141,7 +143,7 @@ const Home: React.FC = () => {
         <View style={[styles.header1, styles.header1FlexBox]}>
           <Image
             style={styles.icons3}
-            source={require("../assets/images/icons3@3x.png")}
+            source={require("../assets/images/icons3.png")}
           />
           <View style={styles.texto}>
             <Text style={[styles.crdito6, styles.crdito6FlexBox]}>
@@ -151,7 +153,7 @@ const Home: React.FC = () => {
           <View style={[styles.iconsWrapper, styles.header1FlexBox]}>
             <Image
               style={styles.familySvgrepoCom1Icon}
-              source={require("../assets/images/icons4@3x.png")}
+              source={require("../assets/images/icons4.png")}
             />
           </View>
         </View>
@@ -164,7 +166,7 @@ const Home: React.FC = () => {
           <View style={[styles.groupGroup, styles.groupPosition]}>
             <Image
               style={[styles.groupIcon, styles.groupPosition]}
-              source={require("../assets/images/group@3x.png")}
+              source={require("../assets/images/group.png")}
             />
             <Text
               style={[styles.olLilianeSejaContainer, styles.crdito6FlexBox]}
@@ -197,7 +199,7 @@ Eu sou a dona `}</Text>
     </View>
   );
 };
-
+ 
 const styles = StyleSheet.create({
   frameLayout: {
     height: 76,
@@ -420,5 +422,5 @@ const styles = StyleSheet.create({
     left: 21,
   },
 });
-
+ 
 export default Home;

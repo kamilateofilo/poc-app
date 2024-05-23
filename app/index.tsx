@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import InicioCida from '../src/InicioCida';
 import Login from '../src/Login';
@@ -12,26 +11,25 @@ import PesquisarUnidades from '../src/PesquisarUnidades';
 import Unidades1 from '../src/PesquisarUnidades1';
 import Unidades2 from '../src/PesquisarUnidades2';
 import Sobre from '../src/Sobre';
-import { RootStackParamList } from './types';
 
-const Stack = createStackNavigator<RootStackParamList>();
+const Stack = createStackNavigator();
 
-export default function App() {
+const App: React.FC = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="InicioCida">
-        <Stack.Screen name="InicioCida" component={InicioCida} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Beneficios" component={Beneficios} />
-        <Stack.Screen name="IdentificacaoFamilia" component={IdentificacaoFamilia} />
-        <Stack.Screen name="Cadastro" component={Cadastro} />
-        <Stack.Screen name="PAIFAgenda" component={PAIFAgenda} />
-        <Stack.Screen name="PesquisarUnidades" component={PesquisarUnidades} />
-        <Stack.Screen name="Unidades1" component={Unidades1} />
-        <Stack.Screen name="Unidades2" component={Unidades2} />
-        <Stack.Screen name="Sobre" component={Sobre} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator initialRouteName="InicioCida">
+      <Stack.Screen name="InicioCida" component={InicioCida} />
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Beneficios" component={Beneficios} />
+      <Stack.Screen name="IdentificacaoFamilia" component={IdentificacaoFamilia} />
+      <Stack.Screen name="Cadastro" component={Cadastro} />
+      <Stack.Screen name="PAIFAgenda" component={PAIFAgenda} />
+      <Stack.Screen name="PesquisarUnidades" component={PesquisarUnidades} />
+      <Stack.Screen name="Unidades1" component={Unidades1} />
+      <Stack.Screen name="Unidades2" component={Unidades2} />
+      <Stack.Screen name="Sobre" component={Sobre} />
+    </Stack.Navigator>
   );
-}
+};
+
+export default App;
