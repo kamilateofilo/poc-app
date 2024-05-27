@@ -14,21 +14,21 @@ const Home: React.FC = () => {
     <View style={styles.homeChild}>
       <View style={styles.instanceParent}>
         <Pressable
-          style={[styles.frameWrapper, styles.frameLayout]}
-          onPress={() => navigation.navigate("IdentificacaoFamilia")}
-        >
-          <View style={[styles.frameContainer, styles.header1FlexBox]}>
-            <View style={styles.familySvgrepoCom1Parent}>
-              <Image
-                style={styles.familySvgrepoCom1Icon}
-                source={require("../assets/images/familysvgrepocom-1.png")}
-              />
-              <Text style={[styles.crdito, styles.crasTypo]}>
-                Identificação da família
-              </Text>
+            style={[styles.frameWrapper, styles.frameLayout]}
+            onPress={() => navigation.navigate("IdentificacaoFamilia")}
+          >
+            <View style={[styles.frameContainer, styles.header1FlexBox]}>
+              <View style={styles.familySvgrepoCom1Parent}>
+                <Image
+                  style={styles.familySvgrepoCom1Icon}
+                  source={require("../assets/images/familysvgrepocom-1.png")}
+                />
+                <Text style={[styles.crdito, styles.crasTypo]}>
+                  Identificação da família
+                </Text>
+              </View>
             </View>
-          </View>
-        </Pressable>
+          </Pressable>
         <Pressable
           style={[styles.framePressable, styles.frameLayout]}
           onPress={() => navigation.navigate("Beneficios")}
@@ -114,6 +114,22 @@ const Home: React.FC = () => {
           />
           <Text style={styles.home1}>Home</Text>
         </View>
+        <Pressable
+          style={[styles.frameWrapper, styles.frameLayout]}
+          onPress={() => navigation.navigate("IdentificacaoFamilia")}
+        >
+          <View style={[styles.frameContainer, styles.header1FlexBox]}>
+            <View style={styles.familySvgrepoCom1Parent}>
+              <Image
+                style={styles.familySvgrepoCom1Icon}
+                source={require("../assets/images/familysvgrepocom-1.png")}
+              />
+              <Text style={[styles.crdito, styles.crasTypo]}>
+                Identificação da família
+              </Text>
+            </View>
+          </View>
+        </Pressable>
         <Pressable
           style={styles.mapPinParent}
           onPress={() => navigation.navigate("PesquisarUnidades")}
