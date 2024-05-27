@@ -1,207 +1,107 @@
-
 import React from 'react';
-import { View, Text, Pressable, Image, StyleSheet } from 'react-native';
-import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { View, Text, Image, StyleSheet, Pressable, FlatList } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NavigationProp } from '@react-navigation/core';
 
 import { RootStackParamList } from '../app/types';
 
-
 const Home: React.FC = () => {
-    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+ 
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false, 
+    });
+  }, [navigation]);
+
+  const data = [
+    { label: 'Identificação da família', route: 'IdentificacaoFamilia', image: require("../assets/images/familysvgrepocom-1.png") },
+    { label: 'Benefícios', route: 'Beneficios', image: require("../assets/images/familysvgrepocom-11.png") },
+    { label: 'PAIF', route: 'PAIFAgenda', image: require("../assets/images/familysvgrepocom-12.png") },
+    { label: 'Pesquisar unidades', route: 'PesquisarUnidades', image: require("../assets/images/familysvgrepocom-13.png") },
+    { label: 'Sobre a Proteção Social', route: 'Sobre', image: require("../assets/images/familysvgrepocom-14.png") },
+    { label: 'Cadastro Único', route: 'Cadastro', image: require("../assets/images/familysvgrepocom-15.png") },
+  ];
+
+  const renderItem = ({ item }: { item: any }) => (
+    <View style={[styles.frameWrapper, styles.frameLayout]}>
+      <Pressable onPress={() => navigation.navigate(item.route)}>
+        <View style={[styles.frameContainer, styles.header1FlexBox]}>
+          <View style={styles.familySvgrepoCom1Parent}>
+            <Image style={styles.familySvgrepoCom1Icon} source={item.image} />
+            <Text style={[styles.crdito, styles.crasTypo]}>
+              {item.label}
+            </Text>
+          </View>
+        </View>
+      </Pressable>
+    </View>
+  );
+
   return (
     <View style={styles.homeChild}>
-      <View style={styles.instanceParent}>
-        <Pressable
-          style={[styles.frameWrapper, styles.frameLayout]}
-          onPress={() => navigation.navigate("IdentificacaoFamilia")}
-        >
-          <View style={[styles.frameContainer, styles.header1FlexBox]}>
-            <View style={styles.familySvgrepoCom1Parent}>
-              <Image
-                style={styles.familySvgrepoCom1Icon}
-                source={require("../assets/images/familysvgrepocom-1@3x.png")}
-              />
-              <Text style={[styles.crdito, styles.crasTypo]}>
-                Identificação da família
-              </Text>
-            </View>
-          </View>
-        </Pressable>
-        <Pressable
-          style={[styles.framePressable, styles.frameLayout]}
-          onPress={() => navigation.navigate("Beneficios")}
-        >
-          <View style={[styles.frameContainer, styles.header1FlexBox]}>
-            <View style={styles.familySvgrepoCom1Group}>
-              <Image
-                style={styles.familySvgrepoCom1Icon}
-                source={require("../assets/images/familysvgrepocom-11@3x.png")}
-              />
-              <Text style={[styles.crdito, styles.crasTypo]}>Benefícios</Text>
-            </View>
-          </View>
-        </Pressable>
-        <Pressable
-          style={[styles.framePressable, styles.frameLayout]}
-          onPress={() => navigation.navigate("PAIFAgenda")}
-        >
-          <View style={[styles.frameContainer, styles.header1FlexBox]}>
-            <View style={styles.familySvgrepoCom1Group}>
-              <Image
-                style={styles.familySvgrepoCom1Icon}
-                source={require("../assets/images/familysvgrepocom-12@3x.png")}
-              />
-              <Text style={[styles.crdito, styles.crasTypo]}>PAIF</Text>
-            </View>
-          </View>
-        </Pressable>
-        <Pressable
-          style={[styles.framePressable, styles.frameLayout]}
-          onPress={() => navigation.navigate("PesquisarUnidades")}
-        >
-          <View style={[styles.frameContainer, styles.header1FlexBox]}>
-            <View style={styles.familySvgrepoCom1Group}>
-              <Image
-                style={styles.familySvgrepoCom1Icon}
-                source={require("../assets/images/familysvgrepocom-13@3x.png")}
-              />
-              <Text style={[styles.crdito, styles.crasTypo]}>
-                Pesquisar unidades
-              </Text>
-            </View>
-          </View>
-        </Pressable>
-        <Pressable
-          style={[styles.framePressable, styles.frameLayout]}
-          onPress={() => navigation.navigate("Sobre")}
-        >
-          <View style={[styles.frameContainer, styles.header1FlexBox]}>
-            <View style={styles.familySvgrepoCom1Group}>
-              <Image
-                style={[styles.familySvgrepoCom1Icon4, styles.familyIconLayout]}
-                source={require("../assets/images/familysvgrepocom-14@3x.png")}
-              />
-              <Text style={[styles.crdito, styles.crasTypo]}>
-                Sobre a Proteção Social
-              </Text>
-            </View>
-          </View>
-        </Pressable>
-        <Pressable
-          style={[styles.framePressable, styles.frameLayout]}
-          onPress={() => navigation.navigate("Cadastro")}
-        >
-          <View style={[styles.frameContainer, styles.header1FlexBox]}>
-            <View style={styles.familySvgrepoCom1Group}>
-              <Image
-                style={[styles.familySvgrepoCom1Icon5, styles.familyIconLayout]}
-                source={require("../assets/images/familysvgrepocom-15@3x.png")}
-              />
-              <Text style={[styles.crdito, styles.crasTypo]}>
-                Cadastro Único
-              </Text>
-            </View>
-          </View>
-        </Pressable>
-      </View>
-      <View style={[styles.frameParent, styles.headerPosition]}>
-        <View style={styles.iconsParent}>
-          <Image
-            style={styles.familySvgrepoCom1Icon}
-            source={require("../assets/images/icon.png")}
-          />
-          <Text style={styles.home1}>Home</Text>
-        </View>
-        <Pressable
-          style={styles.mapPinParent}
-          onPress={() => navigation.navigate("PesquisarUnidades")}
-        >
-          <Image
-            style={styles.familySvgrepoCom1Icon}
-            source={require("../assets/images/mappin@3x.png")}
-          />
-          <Text style={styles.home1}>Cras/Creas</Text>
-        </Pressable>
-        <View style={styles.iconsParent}>
-          <Image
-            style={styles.familySvgrepoCom1Icon}
-            source={require("../assets/images/iconns1@3x.png")}
-          />
-          <Text style={styles.home1}>Configurações</Text>
-        </View>
-        <View style={styles.iconsParent}>
-          <Image
-            style={styles.icons2}
-            source={require("../assets/images/icons2@3x.png")}
-          />
-          <Text style={styles.home1}>Notificações</Text>
-        </View>
-      </View>
       <View style={[styles.header, styles.headerPosition]}>
         <View style={[styles.header1, styles.header1FlexBox]}>
-          <Image
-            style={styles.icons3}
-            source={require("../assets/images/icons3@3x.png")}
-          />
+          <Image style={styles.icons3} source={require("../assets/images/icons3.png")} />
           <View style={styles.texto}>
             <Text style={[styles.crdito6, styles.crdito6FlexBox]}>
               Olá, Liliane
             </Text>
           </View>
           <View style={[styles.iconsWrapper, styles.header1FlexBox]}>
-            <Image
-              style={styles.familySvgrepoCom1Icon}
-              source={require("../assets/images/icons4@3x.png")}
-            />
+            <Image style={styles.familySvgrepoCom1Icon} source={require("../assets/images/icons4.png")} />
           </View>
         </View>
       </View>
+
       <View style={[styles.groupParent, styles.groupLayout]}>
         <View style={[styles.rectangleWrapper, styles.groupLayout]}>
           <View style={[styles.groupChild, styles.groupLayout]} />
         </View>
+
         <View style={styles.groupContainer}>
           <View style={[styles.groupGroup, styles.groupPosition]}>
-            <Image
-              style={[styles.groupIcon, styles.groupPosition]}
-              source={require("../assets/images/group@3x.png")}
-            />
-            <Text
-              style={[styles.olLilianeSejaContainer, styles.crdito6FlexBox]}
-            >
+            <Image style={[styles.groupIcon, styles.groupPosition]} source={require("../assets/images/group.png")} />
+            <Text style={[styles.olLilianeSejaContainer, styles.crdito6FlexBox]}>
               <Text style={styles.olLilianeSejaContainer1}>
-                <Text
-                  style={styles.olLilianeSeja}
-                >{`Olá, Liliane, seja bem-vinda ao pedacinho do `}</Text>
+                <Text style={styles.olLilianeSeja}>
+                  Olá, Liliane, seja bem-vinda ao pedacinho do{' '}
+                </Text>
                 <Text style={[styles.cras, styles.crasTypo]}>CRAS</Text>
-                <Text style={styles.olLilianeSeja}>{` e `}</Text>
+                <Text style={styles.olLilianeSeja}>{' e '}</Text>
                 <Text style={[styles.cras, styles.crasTypo]}>CREAS</Text>
-                <Text style={styles.olLilianeSeja}>{` sempre ao seu lado.
-Eu sou a dona `}</Text>
+                <Text style={styles.olLilianeSeja}>{' sempre ao seu lado. Eu sou a dona '}</Text>
                 <Text style={[styles.cras, styles.crasTypo]}>Cida</Text>
                 <Text style={styles.olLilianeSeja}>
-                  {" "}
-                  e estou aqui para te acolher e aproximar dos serviços de
-                  assistência social.
+                  {' e estou aqui para te acolher e aproximar dos serviços de assistência social.'}
                 </Text>
               </Text>
             </Text>
           </View>
-          <Image
-            style={styles.image4Icon}
-            source={require("../assets/images/cida-recort.png")}
-          />
+          <Image style={styles.image4Icon} source={require("../assets/images/cida-recort.png")} />
         </View>
       </View>
-      <View style={styles.homeChild} />
+
+      <FlatList
+        style={styles.flatList}
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => index.toString()}
+        ItemSeparatorComponent={() => <View style={{ height: 3 }} />}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  flatList: {
+    marginTop: "90%",
+    marginLeft: "8%",
+    
+  },
   frameLayout: {
     height: 76,
-    backgroundColor: '#d9d9d9',
+    backgroundColor: '#FECE17',
     borderRadius: 5,
     justifyContent: "center",
     width: 328,
@@ -220,10 +120,11 @@ const styles = StyleSheet.create({
     height: 24,
   },
   headerPosition: {
-    width: 376,
+    width: '100%',
     backgroundColor: "#e42f58",
     left: 0,
     position: "absolute",
+    
   },
   crdito6FlexBox: {
     display: "flex",
@@ -242,7 +143,6 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   familySvgrepoCom1Icon: {
-    overflow: "hidden",
     height: 24,
     width: 24,
   },
@@ -350,7 +250,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   header: {
-    paddingHorizontal: 0,
+    paddingHorizontal: 5,
     paddingVertical: 20,
     top: 0,
   },
@@ -394,7 +294,6 @@ const styles = StyleSheet.create({
     height: "54.27%",
     width: "71.46%",
     bottom: "45.73%",
-    left: "28.54%",
   },
   image4Icon: {
     top: 70,
@@ -416,8 +315,8 @@ const styles = StyleSheet.create({
     top: 73,
   },
   homeChild: {
-    top: 343,
-    left: 21,
+    height: 'auto',
+    width: 'auto',
   },
 });
 

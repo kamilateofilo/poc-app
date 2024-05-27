@@ -1,13 +1,13 @@
-// CadastroUnico.tsx
+// Home.tsx
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const Cadastro: React.FC = () => {
+const Configuracoes: React.FC = () => {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Página Cadastro</Text>
+      <Text>Página Configurações</Text>
     </View>
   );
 };
 
-export default Cadastro;
+export default Configuracoes;
