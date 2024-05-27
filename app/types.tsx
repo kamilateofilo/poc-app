@@ -11,5 +11,7 @@ export type RootStackParamList = {
     Unidades1: undefined;
     Unidades2: undefined; 
     Sobre: undefined;
+    Configuracoes: undefined;
+    Notificacoes: undefined;
   };
   

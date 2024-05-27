@@ -15,7 +15,13 @@ const InicioCida: React.FC<Props> = ({ navigation }) => {
       navigation.navigate('Login');
     }, 5000);
 
-    return () => clearTimeout(timer); // Limpa o timer se o componente desmontar antes de 5 segundos
+    return () => clearTimeout(timer);
+  }, [navigation]);
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false, 
+    });
   }, [navigation]);
 
   return (
@@ -49,7 +55,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   inicioCida: {
-    backgroundColor: 'white', // Defina a cor de fundo conforme necessário
+    backgroundColor: 'white', 
     flex: 1,
     width: "100%",
     overflow: "hidden",
