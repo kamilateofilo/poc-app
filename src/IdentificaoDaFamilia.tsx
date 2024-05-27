@@ -29,73 +29,72 @@ const IdentificacaoFamilia: React.FC = () => {
       dataNascimento: "02/02/1982",
       sexo: "Feminino"
     },
-    // Adicione mais integrantes conforme necessário
   ];
 
   return (
     <View style={{ flex: 1 }}>
-      <View style={styles.groupParent}>
-        <View style={styles.rectangleWrapper}>
-          <View style={styles.groupChild} />
+      <View style={styles.headerContainer}>
+        <View style={styles.backgroundWrapper}>
+          <View style={styles.background} />
         </View>
-        <View style={styles.groupContainer}>
-          <View style={styles.groupGroup}>
+        <View style={styles.contentContainer}>
+          <View style={styles.textContainer}>
             <Image
-              style={styles.groupIcon}
+              style={styles.icon}
               source={require("../assets/images/group.png")}
             />
-            <Text style={styles.olLilianeSejaContainer}>
-              <Text style={styles.olLilianeSejaContainer1}>
-                <Text style={styles.olLilianeSeja}>
+            <Text style={styles.descriptionContainer}>
+              <Text style={styles.descriptionWrapper}>
+                <Text style={styles.descriptionText}>
                   {`Aqui você encontra os dados cadastrais da sua familia registrados na unidade do `}
                 </Text>
-                <Text style={styles.cras}>CRAS</Text>
-                <Text style={styles.olLilianeSeja}>{` e `}</Text>
-                <Text style={styles.cras}>CREAS</Text>
-                <Text style={styles.olLilianeSeja}>
+                <Text style={styles.highlightText}>CRAS</Text>
+                <Text style={styles.descriptionText}>{` e `}</Text>
+                <Text style={styles.highlightText}>CREAS</Text>
+                <Text style={styles.descriptionText}>
                   {` É muito importante manter as informações atualizadas para que a `}
                 </Text>
-                <Text style={styles.cras}>assistência social</Text>
-                <Text style={styles.olLilianeSeja}>{` possa apoiar você e sua família no acesso aos benefícios de direito. `}
+                <Text style={styles.highlightText}>assistência social</Text>
+                <Text style={styles.descriptionText}>{` possa apoiar você e sua família no acesso aos benefícios de direito. `}
                 </Text>
               </Text>
             </Text>
           </View>
           <Image
-            style={styles.image4Icon}
+            style={styles.image}
             source={require("../assets/images/group2..png")}
           />
         </View>
       </View>
 
-      <ScrollView style={styles.scrollableView} contentContainerStyle={styles.scrollContent}>
+      <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollContent}>
         <View>
-          <View style={styles.frameGroup}>
+          <View style={styles.frameContainer}>
             <FrameComponent
               prop="05"
-              quantidadeDeMembrosDaFaml="Quantidade de membros da família"
+              qtdDeMembrosDaFamilia="Quantidade de membros da família"
               atualizarDados="Adicionar pessoa à família"
               textHeight="unset"
             />
             <FrameComponent
               prop="R$ 1.000"
-              quantidadeDeMembrosDaFaml={`Renda 
+              qtdDeMembrosDaFamilia={`Renda 
 Familiar`}
               atualizarDados="Atualizar renda familiar"
               textHeight="unset"
               textMarginLeft={16}
             />
           </View>
-          <View style={styles.familiaParent}>
+          <View style={styles.familyContainer}>
             <Familia
-              endereo="Endereço"
+              title="Endereço"
               mingcutedownFill={require("../assets/images/mingcutedownfill4.png")}
-              detalhes={enderecoDetalhes}
+              details={enderecoDetalhes}
             />
             <Familia
-              endereo="Integrantes da Família"
+              title="Integrantes da Família"
               mingcutedownFill={require("../assets/images/mingcutedownfill4.png")}
-              detalhesIntegrantes={integrantesDetalhes}
+              detailsMembers={integrantesDetalhes}
               propMarginTop={16}
             />
           </View>
@@ -106,8 +105,7 @@ Familiar`}
 };
 
 const styles = StyleSheet.create({
-
-  scrollableView: {
+  scrollView: {
     backgroundColor: 'white',
     flex: 1,
   },
@@ -121,59 +119,60 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: 328,
   },
-  header1FlexBox: {
+  headerFlexBox: {
     paddingVertical: 0,
     flexDirection: "row",
     alignItems: "center",
   },
-  crasTypo: {
+  highlightText: {
     fontFamily: "Roboto",
     fontWeight: "700",
+    color: "#e42f58",
   },
-  familyIconLayout: {
+  iconSize: {
     width: 24,
     height: 24,
   },
-  headerPosition: {
+  headerStyle: {
     width: '100%',
     backgroundColor: "#e42f58",
     left: 0,
     position: "absolute",
   },
-  crdito6FlexBox: {
+  creditBox: {
     display: "flex",
     alignItems: "center",
     position: "absolute",
   },
-  groupLayout: {
+  fullHeightWidth: {
     height: 380,
     width: '100%',
     top: 0,
     left: 0,
     position: "absolute",
   },
-  groupPosition: {
+  positionAbsolute: {
     right: "0%",
     top: "0%",
     position: "absolute",
   },
-  familySvgrepoCom1Icon: {
+  overflowHidden: {
     overflow: "hidden",
     height: 24,
     width: 24,
   },
-  crdito: {
+  centerText: {
     fontSize: 18,
     marginLeft: 16,
     textAlign: "center",
     color: "#000",
   },
-  familySvgrepoCom1Parent: {
+  centerContent: {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
   },
-  frameContainer: {
+  frameStyle: {
     borderTopLeftRadius: 5,
     borderTopRightRadius: 41,
     borderBottomRightRadius: 41,
@@ -182,62 +181,56 @@ const styles = StyleSheet.create({
     width: 328,
     paddingVertical: 0,
   },
-  frameWrapper: {
+  centerAlign: {
     justifyContent: "center",
     alignItems: "center",
   },
-  familySvgrepoCom1Group: {
+  flexRowAlign: {
     flexDirection: "row",
     alignItems: "center",
   },
-  framePressable: {
+  marginTop8: {
     marginTop: 8,
     justifyContent: "center",
   },
-  familySvgrepoCom1Icon4: {
-    height: 24,
-  },
-  familySvgrepoCom1Icon5: {
-    height: 24,
-  },
-  instanceParent: {
+  absoluteCenter: {
     marginLeft: -163.9,
     top: 362,
     left: "50%",
     height: 613,
     position: "absolute",
   },
-  home1: {
+  smallText: {
     color: "#fff",
     fontFamily: "Roboto",
     fontSize: 10,
     marginTop: 8,
     textAlign: "center",
   },
-  iconsParent: {
+  alignCenter: {
     alignItems: "center",
   },
-  mapPinParent: {
+  justifyCenter: {
     justifyContent: "center",
     alignItems: "center",
   },
-  icons2: {
+  smallIcon: {
     width: 20,
     height: 24,
   },
-  frameParent: {
+  bottomContainer: {
     bottom: 0,
     justifyContent: "space-between",
     paddingVertical: 8,
     paddingHorizontal: 20,
     flexDirection: "row",
   },
-  icons3: {
+  fullStretch: {
     alignSelf: "stretch",
     maxHeight: "100%",
     width: 24,
   },
-  crdito6: {
+  lightGrayText: {
     fontSize: 14,
     fontWeight: "500",
     fontFamily: "Roboto",
@@ -250,38 +243,38 @@ const styles = StyleSheet.create({
     textAlign: "center",
     justifyContent: "center",
   },
-  texto: {
+  width80: {
     width: 80,
     height: 18,
     marginLeft: 8,
   },
-  iconsWrapper: {
+  iconWrapper: {
     width: 208,
     justifyContent: "flex-end",
     paddingHorizontal: 8,
     marginLeft: 8,
   },
-  header1: {
+  headerContent: {
     width: 352,
     paddingHorizontal: 20,
   },
-  header: {
+  headerPadding: {
     paddingHorizontal: 0,
     paddingVertical: 20,
     top: 0,
   },
-  groupChild: {
+  background: {
     top: 0,
     backgroundColor: "#fff",
     height: "100%",
     width: "100%",
   },
-  rectangleWrapper: {
+  backgroundWrapper: {
     top: 0,
     height: "100%",
     width: "100%",
   },
-  groupIcon: {
+  icon: {
     bottom: -160,
     height: "100%",
     left: -35,
@@ -289,17 +282,14 @@ const styles = StyleSheet.create({
     maxHeight: "100%",
     overflow: "hidden",
   },
-  olLilianeSeja: {
+  descriptionText: {
     fontFamily: "Roboto",
     color: "#000",
   },
-  cras: {
-    color: "#e42f58",
-  },
-  olLilianeSejaContainer1: {
+  descriptionWrapper: {
     width: "100%",
   },
-  olLilianeSejaContainer: {
+  descriptionContainer: {
     top: -10,
     left: -25,
     lineHeight: 12.5,
@@ -308,20 +298,20 @@ const styles = StyleSheet.create({
     height: "50%",
     fontSize: 9,
   },
-  groupGroup: {
+  textContainer: {
     height: "54.27%",
     width: "71.46%",
     bottom: "45.73%",
     left: "28.54%",
   },
-  image4Icon: {
+  image: {
     top: 186,
     width: 170,
     height: 170,
     right: 180,
     position: "absolute",
   },
-  groupContainer: {
+  contentContainer: {
     height: "93.78%",
     width: "82.18%",
     top: "6.22%",
@@ -330,18 +320,17 @@ const styles = StyleSheet.create({
     bottom: "0%",
     position: "absolute",
   },
-  groupParent: {
+  headerContainer: {
     height: 400,
     width: '100%',
     left: 0,
     position: "relative",
   },
-  homeChild: {
+  homeBackground: {
     top: 343,
     left: 21,
   },
-
-  groupItemPosition: {
+  whiteBackground: {
     left: 0,
     position: "absolute",
     top: 380,
@@ -350,11 +339,10 @@ const styles = StyleSheet.create({
     borderColor: 'red', 
     borderStyle: 'solid', 
   },
-  frameSpaceBlock: {
+  flexRow: {
     flexDirection: "row",
   },
-
-  frameGroup: {
+  frameContainer: {
     paddingHorizontal: 0,
     justifyContent: "center",
     alignItems: "center",
@@ -362,11 +350,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 30,
   },
-  familiaParent: {
+  familyContainer: {
     marginTop: 24,
   },
-
-  boxInfo: {
+  infoBox: {
     paddingHorizontal: 10,
     flexDirection: "column",
     flex: 1,

@@ -1,10 +1,9 @@
 import React, { useMemo } from "react";
 import { Text, StyleSheet, View } from "react-native";
-import { Color, Border, FontFamily, FontSize, Padding } from "../GlobalStyles";
 
 export type FrameComponentType = {
   prop?: string;
-  quantidadeDeMembrosDaFaml?: string;
+  qtdDeMembrosDaFamilia?: string;
   atualizarDados?: string;
   textHeight?: number | string;
   textMarginLeft?: number | string;
@@ -14,9 +13,10 @@ const getStyleValue = (key: string, value: string | number | undefined) => {
   if (value === undefined) return;
   return { [key]: value === "unset" ? undefined : value };
 };
+
 const FrameComponent = ({
   prop,
-  quantidadeDeMembrosDaFaml,
+  qtdDeMembrosDaFamilia,
   atualizarDados,
   textHeight,
   textMarginLeft,
@@ -29,20 +29,18 @@ const FrameComponent = ({
   }, [textHeight, textMarginLeft]);
 
   return (
-    <View style={[styles.boxInfo, styles.frameFlexBox, frameViewStyle]}>
-      <View style={styles.frameFlexBox}>
-        <View style={[styles.wrapper, styles.wrapperBg]}>
-          <Text style={[styles.text, styles.textTypo]}>{prop}</Text>
+    <View style={[styles.container, styles.flexBox, frameViewStyle]}>
+      <View style={styles.flexBox}>
+        <View style={[styles.valueWrapper, styles.valueBackground]}>
+          <Text style={[styles.valueText, styles.textStyle]}>{prop}</Text>
         </View>
-        <Text style={[styles.quantidadeDeMembros, styles.textTypo]}>
-          {quantidadeDeMembrosDaFaml}
+        <Text style={[styles.description, styles.textStyle]}>
+          {qtdDeMembrosDaFamilia}
         </Text>
       </View>
-      <View style={[styles.frameWrapper]}>
-        <View
-          style={[styles.frameFlexBox]}
-        >
-          <Text style={[styles.btnAtualizar, styles.textTypo]}>
+      <View style={styles.buttonWrapper}>
+        <View style={styles.flexBox}>
+          <Text style={[styles.updateButton, styles.textStyle]}>
             {atualizarDados}
           </Text>
         </View>
@@ -52,31 +50,31 @@ const FrameComponent = ({
 };
 
 const styles = StyleSheet.create({
-  frameFlexBox: {
+  flexBox: {
     justifyContent: "center",
     alignItems: "center",
   },
-  wrapperBg: {
+  valueBackground: {
     backgroundColor: "#0db23d",
     borderRadius: 5,
   },
-  textTypo: {
+  textStyle: {
     textAlign: "center",
     fontWeight: "700",
   },
-  text: {
+  valueText: {
     fontSize: 20,
     color: "#FFF",
     textAlign: "center",
     fontWeight: "700",
   },
-  wrapper: {
-    padding: Padding.p_9xs,
+  valueWrapper: {
+    padding: 5,
     alignItems: "center",
     backgroundColor: "#0db23d",
-    borderRadius: Border.br_9xs,
+    borderRadius: 7,
   },
-  quantidadeDeMembros: {
+  description: {
     fontSize: 12,
     color: "#0db23d",
     display: "flex",
@@ -86,7 +84,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  btnAtualizar: {
+  updateButton: {
     fontSize: 9,
     color: "#FFF",
     textAlign: "center",
@@ -98,20 +96,19 @@ const styles = StyleSheet.create({
     paddingEnd: 7,
     paddingStart: 7,
   },
-
-  frameWrapper: {
+  buttonWrapper: {
     width: 140,
-    paddingVertical: Padding.p_7xs,
+    paddingVertical: 6,
     marginTop: 10,
   },
-  boxInfo: {
+  container: {
     borderRadius: 15,
     borderStyle: "solid",
     borderColor: "#0db23d",
     borderWidth: 1,
     width: "47%",
     height: 130,
-    padding: Padding.p_3xs,
+    padding: 10,
   },
 });
 
