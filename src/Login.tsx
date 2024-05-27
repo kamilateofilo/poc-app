@@ -14,6 +14,12 @@ const Login: React.FC<Props> = ({ navigation }) => {
     navigation.navigate('Home');
   };
 
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false, 
+    });
+  }, [navigation]);
+
   return (
     <View style={[styles.login, styles.loginFlexBox]}>
       <Image
@@ -48,7 +54,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   botoFlexBox: {
-    padding: 16,
+    padding: 1,
     flexDirection: "row",
     width: 328,
     borderRadius: 5,
