@@ -13,7 +13,7 @@ import Unidades2 from '../src/PesquisarUnidades2';
 import Sobre from '../src/Sobre';
 import Configuracoes from '../src/Configuracoes';
 import Notificacoes from '../src/Notificacoes';
-import BottomTabNavigator from '../src/components/BottomTab';
+import BottomTabNavigator from '../src/Bottons/BottomTab';
 
 const Stack = createStackNavigator();
 
