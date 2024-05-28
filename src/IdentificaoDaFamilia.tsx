@@ -33,6 +33,14 @@ const IdentificacaoFamilia: React.FC = () => {
 
   return (
     <View style={{ flex: 1 }}>
+      <View style={[styles.headerPosition]}>
+        <View style={[styles.header]}>
+          <Image style={styles.headerIcon} source={require("../assets/images/arrow-left-icon.png")} />
+          <Text style={[styles.headerText]}>
+            Identificação da familia
+          </Text>
+        </View>
+      </View>
       <View style={styles.headerContainer}>
         <View style={styles.backgroundWrapper}>
           <View style={styles.background} />
@@ -358,6 +366,28 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     flex: 1,
   },
+
+  headerPosition: {
+    width: '100%',
+    backgroundColor: "#e42f58",
+    padding: 20
+  },
+  header: {
+    display: "flex",
+    flexDirection: "row",
+    textAlign: "center",
+    alignItems: "center",
+  },
+  headerText: {
+    color: '#fff',
+    
+  },
+  headerIcon: {
+    maxHeight: "100%",
+    width: 30,
+    height: 30,
+    marginEnd: 20
+  }
 });
 
 export default IdentificacaoFamilia;
