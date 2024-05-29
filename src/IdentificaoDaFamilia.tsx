@@ -1,9 +1,12 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import FrameComponent from "../components/FrameComponent";
 import Familia from "../components/Familia";
 
 const IdentificacaoFamilia: React.FC = () => {
+  const navigation = useNavigation();
+
   const enderecoDetalhes = {
     rua: "Rua Exemplo",
     numero: "123",
@@ -35,7 +38,9 @@ const IdentificacaoFamilia: React.FC = () => {
     <View style={{ flex: 1 }}>
       <View style={[styles.headerPosition]}>
         <View style={[styles.header]}>
-          <Image style={styles.headerIcon} source={require("../assets/images/arrow-left-icon.png")} />
+          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+            <Image style={styles.headerIcon} source={require("../assets/images/arrow-left-icon.png")} />
+          </TouchableOpacity>
           <Text style={[styles.headerText]}>
             Identificação da familia
           </Text>

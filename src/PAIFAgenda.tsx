@@ -104,13 +104,13 @@ const PAIFAgenda: React.FC = () => {
         <Image
           style={styles.groupChild}
           contentFit="cover"
-          source={require("../assets/images/group-2.png")}
+          source={require("../assets/images/group2..png")}
         />
         <View style={styles.groupGroup}>
           <Image
             style={styles.groupIcon}
             contentFit="cover"
-            source={require("../assets/group1.png")}
+            source={require("../assets/images/group1.png")}
           />
           <Text style={styles.prevenoProteoEContainer}>
             <Text style={styles.prevenoProteoEContainer1}>
