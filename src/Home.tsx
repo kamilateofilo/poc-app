@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, Pressable, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NavigationProp } from '@react-navigation/core';
-
+import BottomTabNavigator from './Bottons/BottomTab';
 import { RootStackParamList } from '../app/types';
 
 const Home: React.FC = () => {
@@ -89,6 +89,7 @@ const Home: React.FC = () => {
         keyExtractor={(item, index) => index.toString()}
         ItemSeparatorComponent={() => <View style={{ height: 3 }} />}
       />
+      <BottomTabNavigator/>
     </View>
   );
 };

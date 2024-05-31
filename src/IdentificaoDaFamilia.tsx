@@ -3,6 +3,7 @@ import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'rea
 import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native';
 import FrameComponent from "../components/IdentificaçãoDaFamilia/InfoFamilia";
 import Endereco from "../components/IdentificaçãoDaFamilia/EnderecoEFamilia";
+import BottomTabNavigator from './Bottons/BottomTab';
 
 const IdentificacaoFamilia: React.FC = () => {
   const navigation = useNavigation<NavigationProp<ParamListBase>>();
@@ -75,7 +76,7 @@ const IdentificacaoFamilia: React.FC = () => {
           </View>
           <Image
             style={styles.image}
-            source={require("../assets/images/group2..png")}
+            source={require("../assets/images/cida.png")}
           />
         </View>
       </View>
@@ -113,6 +114,7 @@ Familiar`}
           </View>
         </View>
       </ScrollView>
+      <BottomTabNavigator/>
     </View>
   );
 };

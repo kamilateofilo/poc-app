@@ -1,91 +1,71 @@
 import React from "react";
-import { Image, View, Text } from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
-import Home from "../Home";
+import { Image } from 'expo-image';
+import { View, Text, Pressable } from "react-native";
+import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native';
 import styles from "./styles";
-import PesquisarUnidades from "../PesquisarUnidades";
-import Configuracoes from "../Configuracoes";
-import Notificacoes from "../Notificacoes";
 
-const Tab = createBottomTabNavigator();
+
+
 
 const BottomTabNavigator = () => {
+  const navigation = useNavigation<NavigationProp<ParamListBase>>();
+
   return (
-    <Tab.Navigator
-      screenOptions={{
-        headerShown: false,
-        tabBarStyle: {
-          ...styles.container,
-        },
-        tabBarShowLabel: false,
-      }}
-    >
-      <Tab.Screen
-        options={{
-          tabBarIcon: ({ color, focused }) => (
-            <View style={styles.menu}>
-              <Image
-                source={require("../../assets/images/icons.png")}
-                style={[styles.menuIcon, { tintColor: focused ? color : '#fff' }]}
-              />
-              <Text style={[styles.menuText, { color: focused ? color : '#fff' }]}>Home</Text>
-            </View>
-          ),
-        }}
-        name="Home"
-        component={Home}
-      />
-
-      <Tab.Screen
-        options={{
-          tabBarIcon: ({ color, focused }) => (
-            <View style={styles.menu}>
-              <Image
-                source={require("../../assets/images/mappin.png")}
-                style={[styles.menuIcon, { tintColor: focused ? color : '#fff' }]}
-              />
-              <Text style={[styles.menuText, { color: focused ? color : '#fff' }]}>Cras/Creas</Text>
-            </View>
-          ),
-        }}
-        name="Cras/Creas"
-        component={PesquisarUnidades}
-      />
-
-    <Tab.Screen
-        options={{
-          tabBarIcon: ({ color, focused }) => (
-            <View style={styles.menu}>
-              <Image
-                source={require("../../assets/images/icons1.png")}
-                style={[styles.menuIcon, { tintColor: focused ? color : '#fff' }]}
-              />
-              <Text style={[styles.menuText, { color: focused ? color : '#fff' }]}>Configurações</Text>
-            </View>
-          ),
-        }}
-        name="Configurações"
-        component={Configuracoes}
-      />
-
-    <Tab.Screen
-        options={{
-          tabBarIcon: ({ color, focused }) => (
-            <View style={styles.menu}>
-              <Image
-                source={require("../../assets/images/icons2.png")}
-                style={[styles.menuIcon, { tintColor: focused ? color : '#fff' }]}
-              />
-              <Text style={[styles.menuText, { color: focused ? color : '#fff' }]}>Notificações</Text>
-            </View>
-          ),
-        }}
-        name="Notificações"
-        component={Notificacoes}
-      />
-
-    </Tab.Navigator>
+  <View>
+    <View style={styles.frameContainer}>
+        <Pressable style={styles.instanceParent} onPress={() => navigation.navigate("Home")}>
+          <Image
+            style={styles.mingcutedownFillIcon}
+            contentFit="cover"
+            source={require("../../assets/images/icons6.png")}
+          />
+          <Text style={styles.home}>Home</Text>
+        </Pressable>
+        <Pressable style={styles.instanceParent} onPress={() => navigation.navigate("PesquisarUnidades")}>
+          <Image
+            style={styles.mingcutedownFillIcon}
+            contentFit="cover"
+            source={require("../../assets/images/mappin1.png")}
+          />
+          <Text style={styles.home}>Cras/Creas</Text>
+        </Pressable>
+        <View style={styles.instanceParent}>
+          <Image
+            style={styles.mingcutedownFillIcon}
+            contentFit="cover"
+            source={require("../../assets/images/icons7.png")}
+          />
+          <Text style={styles.home}>Configurações</Text>
+        </View>
+        <View style={styles.instanceParent}>
+          <Image
+            style={styles.icons2}
+            contentFit="cover"
+            source={require("../../assets/images/icons8.png")}
+          />
+          <Text style={styles.home}>Notificações</Text>
+        </View>
+      </View>
+      <View style={styles.header}>
+        <Pressable style={styles.headerContent} onPress={() => navigation.navigate("Home")}>
+          <Image
+            style={styles.icons3}
+            contentFit="cover"
+            source={require("../../assets/images/icons5.png")}
+          />
+          <View style={styles.texto}>
+            <Text style={styles.credito}>PAIF</Text>
+          </View>
+          <View style={styles.iconsWrapper}>
+            <Image
+              style={styles.icons4}
+              contentFit="cover"
+              source={require("../../assets/images/icons4.png")}
+            />
+          </View>
+        </Pressable>
+      </View>
+    </View>
   );
 };
 

@@ -13,26 +13,27 @@ import Unidades2 from '../src/PesquisarUnidades2';
 import Sobre from '../src/Sobre';
 import Configuracoes from '../src/Configuracoes';
 import Notificacoes from '../src/Notificacoes';
-import BottomTabNavigator from '../src/Bottons/BottomTab';
 
 const Stack = createStackNavigator();
 
 const App: React.FC = () => {
+
+
   return (
     <Stack.Navigator initialRouteName="InicioCida" screenOptions={{ headerShown: false }}>
       <Stack.Screen name="InicioCida" component={InicioCida} />
       <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Home" component={BottomTabNavigator} />
+      <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Beneficios" component={Beneficios} />
       <Stack.Screen name="IdentificacaoFamilia" component={IdentificacaoFamilia} />
       <Stack.Screen name="Cadastro" component={Cadastro} />
-      <Stack.Screen name="PAIFAgenda" component={PAIFAgenda} />
-      <Stack.Screen name="PesquisarUnidades" component={BottomTabNavigator} />
+      <Stack.Screen name="PAIFAgenda" component={PAIFAgenda}  />
+      <Stack.Screen name="PesquisarUnidades" component={PesquisarUnidades} />
       <Stack.Screen name="Unidades1" component={Unidades1} />
       <Stack.Screen name="Unidades2" component={Unidades2} />
       <Stack.Screen name="Sobre" component={Sobre} />
-      <Stack.Screen name="Configuracoes" component={BottomTabNavigator} />
-      <Stack.Screen name="Notificacoes" component={BottomTabNavigator} />
+      <Stack.Screen name="Configuracoes" component={Configuracoes} />
+      <Stack.Screen name="Notificacoes" component={Notificacoes} />
     </Stack.Navigator>
   );
 };
