@@ -6,22 +6,10 @@ export type FamiliaType = {
   title?: string;
   mingcutedownFill?: ImageSourcePropType;
   propMarginTop?: number | string;
-  details?: {
-    rua: string;
-    numero: string;
-    localidade: string;
-    municipio: string;
-    uf: string;
-    cep: string;
-    complementoNumero?: string;
-    complementoAdicional?: string;
-    referenciaLocalizacao?: string;
-  };
-  detailsMembers?: Array<{
-    nome: string;
-    parentesco: string;
-    dataNascimento: string;
-    sexo: string;
+  detailsBenefits?: Array<{
+    tipo: string;
+    dataConcessão: string;
+    status: string;
   }>;
 };
 
@@ -30,7 +18,7 @@ const getStyleValue = (key: string, value: string | number | undefined) => {
   return { [key]: value === "unset" ? undefined : value };
 };
 
-const Familia = ({ title, mingcutedownFill, propMarginTop, details, detailsMembers }: FamiliaType) => {
+const Familia = ({ title, mingcutedownFill, propMarginTop, detailsBenefits }: FamiliaType) => {
   const [expanded, setExpanded] = useState(false);
 
   const familiaStyle = useMemo(() => {
@@ -39,11 +27,16 @@ const Familia = ({ title, mingcutedownFill, propMarginTop, details, detailsMembe
     };
   }, [propMarginTop]);
 
-  const renderDetalheItem = (label: string, value: string) => (
-    <View style={styles.detalheItemContainer} key={label}>
-      <Text style={styles.detalheItem}><Text style={styles.bold}>{label}:</Text> {value}</Text>
-    </View>
-  );
+  const renderDetalheItem = (label: string, value: string) => {
+    const isStatus = label === "Status";
+    return (
+      <View style={[styles.detalheItemContainer, isStatus && styles.statusContainer]} key={label}>
+        <Text style={[styles.detalheItem, isStatus && styles.statusText]}>
+          <Text style={styles.bold}>{label}:</Text> {value}
+        </Text>
+      </View>
+    );
+  };
 
   return (
     <View style={[styles.boxFamilia, familiaStyle]}>
@@ -59,47 +52,17 @@ const Familia = ({ title, mingcutedownFill, propMarginTop, details, detailsMembe
             source={mingcutedownFill}
           />
         </TouchableOpacity>
-        {expanded && details && (
-          <View style={styles.boxInfo}>
-            <View style={styles.greenBar}/>
-            <View style={styles.detalhes}>
-              {renderDetalheItem("Rua", details.rua)}
-              {renderDetalheItem("Número", details.numero)}
-              {renderDetalheItem("Localidade", details.localidade)}
-              {renderDetalheItem("Município", details.municipio)}
-              {renderDetalheItem("UF", details.uf)}
-              {renderDetalheItem("CEP", details.cep)}
-              {details.complementoNumero && renderDetalheItem("Complemento do número", details.complementoNumero)}
-              {details.complementoAdicional && renderDetalheItem("Complemento adicional", details.complementoAdicional)}
-              {details.referenciaLocalizacao && renderDetalheItem("Referência de localização", details.referenciaLocalizacao)}
-            </View>
-            <TouchableOpacity>
-              <Image
-                style={styles.editIcon}
-                contentFit="cover"
-                source={require("../assets/images/edit.png")}
-              />
-            </TouchableOpacity>
-          </View>
-        )}
-        {expanded && detailsMembers && (
-          <View style={styles.detalhes}>
-            {detailsMembers.map((integrante, index) => (
+        
+        {expanded && detailsBenefits && (
+          <View style={styles.details}>
+            {detailsBenefits.map((integrante, index) => (
               <View style={styles.boxInfo} key={index}>
                 <View style={styles.greenBar}/>
                 <View style={styles.integranteContainer}>
-                  {renderDetalheItem("Nome", integrante.nome)}
-                  {renderDetalheItem("Parentesco", integrante.parentesco)}
-                  {renderDetalheItem("Data de nascimento", integrante.dataNascimento)}
-                  {renderDetalheItem("Sexo", integrante.sexo)}
+                  {renderDetalheItem("Tipo", integrante.tipo)}
+                  {renderDetalheItem("Data de concessão", integrante.dataConcessão)}
+                  {renderDetalheItem("Status", integrante.status)}
                 </View>
-                <TouchableOpacity>
-                  <Image
-                    style={styles.editIcon}
-                    contentFit="cover"
-                    source={require("../assets/images/edit.png")}
-                  />
-                </TouchableOpacity>
               </View>
             ))}
           </View>
@@ -145,10 +108,10 @@ const styles = StyleSheet.create({
   frameParent: {
     flexWrap: "wrap",
     justifyContent: "space-between",
-    width: 328,
+    width: 340,
     flexDirection: "row",
   },
-  detalhes: {
+  details: {
     marginTop: 10,
   },
   detalheItemContainer: {
@@ -162,6 +125,16 @@ const styles = StyleSheet.create({
   },
   bold: {
     fontWeight: "700",
+  },
+  statusContainer: {
+    backgroundColor: "#0db23d",
+    borderRadius: 15,
+    padding: 5,
+    marginLeft: 5,
+    alignSelf: "flex-start",
+  },
+  statusText: {
+    color: '#FFF'
   },
   editIcon: {
     width: 40,

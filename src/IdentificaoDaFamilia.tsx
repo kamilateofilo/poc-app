@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native';
-import FrameComponent from "../components/FrameComponent";
-import Familia from "../components/Familia";
+import FrameComponent from "../components/IdentificaçãoDaFamilia/InfoFamilia";
+import Endereco from "../components/IdentificaçãoDaFamilia/EnderecoEFamilia";
 
 const IdentificacaoFamilia: React.FC = () => {
   const navigation = useNavigation<NavigationProp<ParamListBase>>();
@@ -99,12 +99,12 @@ Familiar`}
             />
           </View>
           <View style={styles.familyContainer}>
-            <Familia
+            <Endereco
               title="Endereço"
               mingcutedownFill={require("../assets/images/mingcutedownfill4.png")}
               details={enderecoDetalhes}
             />
-            <Familia
+            <Endereco
               title="Integrantes da Família"
               mingcutedownFill={require("../assets/images/mingcutedownfill4.png")}
               detailsMembers={integrantesDetalhes}
