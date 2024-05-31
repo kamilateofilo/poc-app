@@ -3,6 +3,7 @@ import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'rea
 import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native';
 import FrameComponent from "../components/FrameComponent";
 import Familia from "../components/Familia";
+import BottomTabNavigator from './Bottons/BottomTab';
 
 const IdentificacaoFamilia: React.FC = () => {
   const navigation = useNavigation<NavigationProp<ParamListBase>>();
@@ -113,6 +114,7 @@ Familiar`}
           </View>
         </View>
       </ScrollView>
+      <BottomTabNavigator/>
     </View>
   );
 };

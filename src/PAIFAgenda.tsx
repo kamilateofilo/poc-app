@@ -1,18 +1,37 @@
 import React from 'react';
-import { Text, StyleSheet, View, Pressable } from "react-native";
+import { Text, StyleSheet, View, Pressable, TouchableOpacity } from "react-native";
 import { Image } from 'expo-image';
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation, ParamListBase } from "@react-navigation/native";
 import { FontFamily, Padding, FontSize, Color, Border } from "../GlobalStyles";
 import { RootStackParamList } from '../app/types';
+import BottomTabNavigator from './Bottons/BottomTab';
 
-type LoginNavigationProp = StackNavigationProp<RootStackParamList, 'PAIFAgenda'>;
 
 const PAIFAgenda: React.FC = () => {
   const navigation = useNavigation<StackNavigationProp<ParamListBase>>();
+  
+  
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false, 
+    });
+  }, [navigation]);
+
 
   return (
+    
     <View style={styles.paifAgenda}>
+      <View style={[styles.headerPosition]}>
+        <View style={[styles.header]}>
+          <TouchableOpacity onPress={() => navigation.navigate('Home' as never)}>
+            <Image style={styles.headerIcon} source={require("../assets/images/arrow-left-icon.png")} />
+          </TouchableOpacity>
+          <Text style={[styles.headerText]}>
+            PAIF
+          </Text>
+        </View>
+      </View>
       <View style={styles.botoParent}>
         <View style={styles.boto}>
           <Text style={styles.botoPrimario}>Agendar atendimento</Text>
@@ -44,61 +63,14 @@ const PAIFAgenda: React.FC = () => {
                 </View>
               </View>
             </View>
+            
           </View>
         </View>
+       
       </View>
-      <View style={styles.frameContainer}>
-        <Pressable style={styles.instanceParent} onPress={() => navigation.navigate("Home")}>
-          <Image
-            style={styles.mingcutedownFillIcon}
-            contentFit="cover"
-            source={require("../assets/images/icons6.png")}
-          />
-          <Text style={styles.home}>Home</Text>
-        </Pressable>
-        <Pressable style={styles.instanceParent} onPress={() => navigation.navigate("PesquisarUnidades")}>
-          <Image
-            style={styles.mingcutedownFillIcon}
-            contentFit="cover"
-            source={require("../assets/images/mappin1.png")}
-          />
-          <Text style={styles.home}>Cras/Creas</Text>
-        </Pressable>
-        <View style={styles.instanceParent}>
-          <Image
-            style={styles.mingcutedownFillIcon}
-            contentFit="cover"
-            source={require("../assets/images/icons7.png")}
-          />
-          <Text style={styles.home}>Configurações</Text>
-        </View>
-        <View style={styles.instanceParent}>
-          <Image
-            style={styles.icons2}
-            contentFit="cover"
-            source={require("../assets/images/icons8.png")}
-          />
-          <Text style={styles.home}>Notificações</Text>
-        </View>
-      </View>
-      <View style={styles.header}>
-        <Pressable style={styles.headerContent} onPress={() => navigation.navigate("Home")}>
-          <Image
-            style={styles.icons3}
-            contentFit="cover"
-            source={require("../assets/images/icons5.png")}
-          />
-          <View style={styles.texto}>
-            <Text style={styles.credito}>PAIF</Text>
-          </View>
-          <View style={styles.iconsWrapper}>
-            <Image
-              style={styles.icons4}
-              contentFit="cover"
-              source={require("../assets/images/icons4.png")}
-            />
-          </View>
-        </Pressable>
+      <View style={styles.bottom}>
+      <BottomTabNavigator/>
+
       </View>
       <View style={styles.groupParent}>
         <Image
@@ -129,12 +101,18 @@ const PAIFAgenda: React.FC = () => {
             </Text>
           </Text>
         </View>
+        
       </View>
+      
     </View>
+    
   );
 };
 
 const styles = StyleSheet.create({
+  bottom: {
+    marginTop: 670
+  },
   paifAgenda: {
     flex: 1,
     height: 800,
@@ -260,47 +238,6 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
   },
-  frameContainer: {
-    bottom: 0,
-    paddingHorizontal: Padding.p_base,
-    paddingVertical: Padding.p_5xl,
-    justifyContent: "space-between",
-    flexDirection: "row",
-    width: 376,
-    left: 0,
-    backgroundColor: Color.e42F582Paints,
-    position: "absolute",
-  },
-  home: {
-    color: Color.background,
-    marginTop: 8,
-    fontSize: FontSize.size_3xs,
-    fontFamily: FontFamily.robotoRegular,
-    textAlign: "center",
-  },
-  icons2: {
-    width: 20,
-    height: 24,
-  },
-  header: {
-    top: 0,
-    paddingVertical: Padding.p_5xl,
-    paddingHorizontal: 0,
-    width: 376,
-    left: 0,
-    backgroundColor: Color.e42F582Paints,
-    position: "absolute",
-  },
-  headerContent: {
-    width: 352,
-    paddingHorizontal: Padding.p_13xl,
-    paddingVertical: 0,
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  icons3: {
-    height: 24,
-  },
   texto: {
     width: 80,
     height: 18,
@@ -352,7 +289,7 @@ const styles = StyleSheet.create({
   },
   groupIcon: {
     height: "100%",
-    bottom: "0%",
+    top: "80%",
     maxWidth: "100%",
     maxHeight: "100%",
     left: "0%",
@@ -360,7 +297,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   prevenoProteoEContainer: {
-    top: 34,
+    top: 0,
     left: 10,
     lineHeight: 16,
     display: "flex",
@@ -378,6 +315,27 @@ const styles = StyleSheet.create({
   historico1: {
     color: Color.colorGray_200,
   },
+  headerPosition: {
+    width: '100%',
+    backgroundColor: "#e42f58",
+    padding: 20
+  },
+  header: {
+    display: "flex",
+    flexDirection: "row",
+    textAlign: "center",
+    alignItems: "center",
+  },
+  headerText: {
+    color: '#fff',
+    
+  },
+  headerIcon: {
+    maxHeight: "100%",
+    width: 30,
+    height: 30,
+    marginEnd: 20
+  }
 });
 
 export default PAIFAgenda;
